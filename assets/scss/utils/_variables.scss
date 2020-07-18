@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+// * ==========================================================================
+// * SCSS 變數管理
+// * ==========================================================================
+
+// * 顏色
+$color-white: #FFFFFF;
+$color-black: #000000;
+
+// * 字體
+$font-family: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif, Arial;
+
+// * Focus 時的外框樣式
+@function focusBorder($inside:false, $opacity:0.6) {
+    @if $inside == true {
+        @return inset 0 0 0 0.2rem rgba($color-black, $opacity);
+    } @else {
+        @return 0 0 0 0.13rem rgba($color-black, $opacity);
+    }
+}
