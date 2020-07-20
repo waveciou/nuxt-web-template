@@ -34,16 +34,4 @@ export default {
 <style lang="scss" scoped>
   @import "~/assets/scss/utils/_utils.scss";
 
-  body {
-    line-height: 1.6em;
-    letter-spacing: 1px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    background-color: $color-white;
-    position: relative;
-    font-family: $font-family;
-    font-size: 1rem;
-  }
-
 </style>

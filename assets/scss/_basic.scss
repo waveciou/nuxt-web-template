@@ -12,10 +12,8 @@ a {
     color: inherit;
   }
 
-  @include min-width(1025px) {
-    &:focus {
-      outline: none;
-    }
+  &:focus {
+    outline: none;
   }
 }
 
@@ -42,7 +40,7 @@ textarea {
   height: 50px;
   display: inline-block;
   position: relative;
-  font-size: 1rem;
+  font-size: map-get($font-size, base);
   color: $color-black;
   line-height: 40px;
   padding: 5px 10px;
@@ -67,7 +65,7 @@ input[type='submit'],
 input[type='reset'],
 input[type='button'],
 button {
-  font-size: 1rem;
+  font-size: map-get($font-size, base);
   border: none;
   cursor: pointer;
 
@@ -76,7 +74,7 @@ button {
     box-shadow: focusBorder(false);
   }
 
-  @include max-width(1024px) {
+  @include max-width(map-get($desktop, sm)) {
     appearance: none;
   }
 }

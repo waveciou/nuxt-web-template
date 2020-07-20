@@ -1,22 +1,47 @@
 @charset "UTF-8";
 @import "./utils/_utils.scss";
 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=fallback');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,500&display=fallback');
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: fallback;
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/webfonts/fa-solid-900.ttf) format('truetype')
+};
 
 @import "./_reset.scss";
 @import "./_basic.scss";
 @import "./_animate.scss";
+
+body {
+  line-height: 1.6em;
+  letter-spacing: 1px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  background-color: $color-white;
+  position: relative;
+  font-family: $font-family;
+  font-size: map-get($font-size, base);
+}
 
 .wrap {
   width: 100%;
   max-width: calc(100% - 20px);
   margin: auto;
 
-  @include min-width(480px) {
+  @include min-width(map-get($phone, md)) {
     max-width: calc(100% - 30px);
   }
 
-  @include min-width(1280px + 30px) {
+  @include min-width(map-get($desktop, md) + 30px) {
     max-width: 1280px;
   }
+}
+
+.main {
+  min-height: 730px;
 }

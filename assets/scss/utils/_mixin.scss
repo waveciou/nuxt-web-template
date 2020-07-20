@@ -37,6 +37,12 @@
   }
 }
 
+// * Font Awesome
+@mixin fontawesome {
+  font-weight: 900;
+  font-family: 'Font Awesome 5 Free';
+}
+
 // * 隱藏文字
 @mixin hidetext {
   font-size: 0rem;
