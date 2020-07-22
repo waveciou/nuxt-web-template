@@ -27,9 +27,7 @@
 body {
   line-height: 1.6em;
   letter-spacing: 1px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
+  
   background-color: $color-white;
   position: relative;
   font-family: $font-family;
@@ -51,5 +49,5 @@ body {
 }
 
 .main {
-  min-height: 730px;
+  min-height: 1000px;
 }
