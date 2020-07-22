@@ -11,7 +11,7 @@
           <div class="header__nav">
             <ul class="header__navlink">
               <li v-for="item in navLink" :key="item.name">
-                <a :href="item.href" class="header__navlink-link" :class="getIconClassName(item.name)">{{ item.name }}</a>
+                <a :href="item.href" class="header__navlink-link" :class="getIconClassName(item.name)" :title="item.name">{{ item.name }}</a>
               </li>
             </ul>
           </div>

@@ -12,7 +12,7 @@
         <div class="side-right">
           <ul class="footer__media">
             <li v-for="item in mediaLink" :key="item.name">
-              <a :href="item.href" class="footer__media-link" :title="item.name">{{ item.name }}</a>
+              <a :href="item.href" class="footer__media-link" :class="getIconClassName(item.name)" :title="item.name">{{ item.name }}</a>
             </li>
           </ul>
         </div>
@@ -52,6 +52,11 @@
         ]
       }
     },
+    methods: {
+      getIconClassName(payload) {
+        return `has-icon icon-${payload.toLowerCase()}`
+      }
+    }
   }
 </script>
 
@@ -91,7 +96,7 @@
     align-items: center;
 
     > li {
-      padding: 0px 10px;
+      padding: 0px 15px;
     }
   }
 
@@ -99,6 +104,30 @@
     display: block;
     line-height: 1.6em;
     color: $color-white;
+    font-size: 0rem;
+
+    &.has-icon::before {
+      display: block;
+      @include fontawesome('brands');
+      font-size: map-get($font-size, md);
+      line-height: 1.4em;
+    }
+
+    &.icon-facebook::before {
+      content: '\f39e';
+    }
+
+    &.icon-instagram::before {
+      content: '\f16d';
+    }
+
+    &.icon-youtube::before {
+      content: '\f167';
+    }
+
+    &.icon-twitter::before {
+      content: '\f099';
+    }
   }
 
   .footer__copyright {

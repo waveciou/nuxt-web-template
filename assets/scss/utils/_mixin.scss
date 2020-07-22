@@ -38,9 +38,15 @@
 }
 
 // * Font Awesome
-@mixin fontawesome {
+@mixin fontawesome($type: 'solid') {
   font-weight: 900;
-  font-family: 'Font Awesome 5 Free';
+
+  @if $type=='brands' {
+    font-family: 'Font Awesome 5 brands';
+  } @else {
+    font-family: 'Font Awesome 5 solid';
+  }
+
 }
 
 // * 隱藏文字
