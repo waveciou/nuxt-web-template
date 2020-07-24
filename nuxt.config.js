@@ -40,9 +40,10 @@ export default {
   },
   loading: { color: '#fff' },
   css: [
-    { src: '~assets/scss/main.scss', lang: 'scss' }
+    { src: '~/assets/scss/main.scss', lang: 'scss' }
   ],
   plugins: [
+    { src: '~/plugins/vue-scrollto.js' }
   ],
   buildModules: [
   ],

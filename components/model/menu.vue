@@ -28,7 +28,13 @@
   @import "~/assets/scss/utils/_utils.scss";
 
   #menu {
+    display: none;
     border-bottom: 1px $color-gray solid;
+    background-color: $color-white;
+
+    @include min-width(map-get($desktop, sm)) {
+      display: block;
+    }
   }
 
   .menu__list {

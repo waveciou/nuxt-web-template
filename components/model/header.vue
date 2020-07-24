@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{'is-fixed': scrollValue > 0}">
     <div class="wrap">
       <div class="header__content">
         <div class="side-left">
@@ -17,6 +17,9 @@
           </div>
         </div>
       </div>
+      <button class="m-menu__btn" @click.stop="openMobileMenu">
+        <span>Mobile Menu</span>
+      </button>
     </div>
   </header>
 </template>
@@ -41,9 +44,15 @@
         ]
       }
     },
+    props: {
+      scrollValue: Number
+    },
     methods: {
       getIconClassName(payload) {
         return `has-icon icon-${payload.toLowerCase()}`
+      },
+      openMobileMenu() {
+        this.$store.commit('CTRL_MENU_OPEN', true);
       }
     }
   }
@@ -52,20 +61,45 @@
 <style lang="scss" scoped>
   @import "~/assets/scss/utils/_utils.scss";
 
+  $m-menu__size: 60px;
+
   .header {
-    padding: 13px 0px;
+    width: 100%;
+    padding: 0px;
     border-bottom: 1px $color-gray solid;
+    background-color: $color-white;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 3000;
+
+    @include min-width(map-get($desktop, sm)) {
+      padding: 13px 0px;
+    }
+
+    &.is-fixed {
+      position: fixed;
+    }
   }
 
   .header__content {
+    width: calc(100% - #{$m-menu__size});
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include min-width(map-get($desktop, sm)) {
+      width: auto;
+    }
   }
 
   .header__nav {
-    display: flex;
-    align-items: center;
+    display: none;
+
+    @include min-width(map-get($desktop, sm)) {
+      display: flex;
+      align-items: center;
+    }
   }
 
   .header__navlink {
@@ -123,4 +157,58 @@
       @include hidetext;
     }
   }
+
+  .wrap {
+    display: flex;
+    align-items: center;
+
+    @include min-width(map-get($desktop, sm)) {
+      display: block;
+    }
+
+    @include max-width(map-get($tablet, lg)) {
+      max-width: 100%;
+    }
+  }
+
+  .m-menu__btn {
+    width: $m-menu__size;
+    height: $m-menu__size;
+    display: block;
+    padding-top: ($m-menu__size - 7px) / 2;
+    padding-bottom: ($m-menu__size - 7px) / 2;
+    position: relative;
+    @include hidetext;
+
+    span {
+      position: relative;
+
+      &, &::before, &::after {
+        width: 35px;
+        height: 4px;
+        display: block;
+        margin: auto;
+        background-color: $color-black;
+      }
+
+      &::before, &::after {
+        content: '';
+        position: absolute;
+      }
+
+      &::before {
+        margin-top: -10px;
+      }
+
+      &::after {
+        margin-top: 10px;
+        top: 0px;
+      }
+    }
+
+    @include min-width(map-get($desktop, sm)) {
+      display: none;
+    }
+  }
+
 </style>

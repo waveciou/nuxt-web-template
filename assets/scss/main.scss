@@ -24,10 +24,28 @@
 @import "./_basic.scss";
 @import "./_animate.scss";
 
+html {
+  width: 100%;
+  position: relative;
+
+  &.is-hidden {
+    overflow: hidden;
+
+    > body {
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+  }
+}
+
 body {
+  width: 100%;
   line-height: 1.6em;
   letter-spacing: 1px;
-  
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  -o-overflow-scrolling: touch;
   background-color: $color-white;
   position: relative;
   font-family: $font-family;

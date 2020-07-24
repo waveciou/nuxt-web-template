@@ -1,18 +1,19 @@
 <template>
   <div class="wrapper">
     <noscript-component />
-    <div class="wrapper__page" @scroll="onScrollHandler($event)">
-      <header-component :scrollValue="scrollValue" />
-      <menu-component />
-      <transition name="fade" >
-        <nuxt />
-      </transition>
-      <footer-component />
+    <header-component :scrollValue="scrollValue" />
+    <menu-component />
+    <transition name="fade">
+      <nuxt />
+    </transition>
+    <footer-component />
+    <transition name="fade" mode="out-in" v-if="scrollValue > 0">
       <div class="float-block">
-        <a href="javascript:;" class="float-block__top-btn" @click.stop="scrollToTop">TOP</a>
+        <a href="javascript:;" class="float-block__top-btn" v-scroll-to="{element: 'body'}">TOP</a>
       </div>
+    </transition>
+    <div class="m-menu__overlay" :class="{'is-active': $store.state.menuOpen === true}" @click.stop="closeMobileMenu">
     </div>
-    <div class="mobile-menu__overlay"></div>
     <mobile-menu-component />
   </div>
 </template>
@@ -27,7 +28,8 @@ import mobileMenu from '~/components/model/menu-mobile.vue';
 export default {
   data() {
     return {
-      scrollValue: 0
+      scrollValue: 0,
+      htmlSelector: null
     }
   },
   components: {
@@ -37,60 +39,107 @@ export default {
     'footer-component': footer,
     'mobile-menu-component': mobileMenu
   },
-  methods: {
-    onScrollHandler(el) {
-      this.scrollValue = el.srcElement.scrollTop;
-    },
-    scrollToTop() {
-      // let $wrapperPage = document.querySelector('.wrapper__page');
+  mounted() {
+    this.htmlSelector = document.querySelector('html');
 
-      // Velocity($wrapperPage, 'scroll', {
-      //   duration: 800,
-      //   offset: 0,
-      //   mobileHA: false
-      // });
+    this.$store.commit('GET_SCREEN_WIDTH');
+
+    window.addEventListener('scroll', this.getScrollValue);
+    window.addEventListener('resize', this.getScreenWidth);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.getScrollValue);
+    window.removeEventListener('resize', this.getScreenWidth);
+  },
+  methods: {
+    closeMobileMenu() {
+      this.$store.commit('CTRL_MENU_OPEN', false);
+    },
+    getScreenWidth() {
+      this.$store.commit('GET_SCREEN_WIDTH');
+    },
+    getScrollValue() {
+      this.scrollValue = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
     }
-  }
+  },
+  computed: {
+    menuOpenStatus() {
+      return this.$store.state.menuOpen;
+    },
+  },
+  watch: {
+    menuOpenStatus(value) {
+      if (value === true) {
+        this.htmlSelector.classList.add('is-hidden');
+      } else {
+        this.htmlSelector.classList.remove('is-hidden');
+      }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
   @import "~/assets/scss/utils/_utils.scss";
 
-  html, body,
-  #__nuxt, #__layout, .wrapper {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .wrapper__page {
-    width: 100%;
-    height: 100%;
+  .wrapper {
     position: relative;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    -o-overflow-scrolling: touch;
+    padding-top: 61px;
+
+    @include min-width(map-get($desktop, sm)) {
+      padding-top: 67px;
+    }
   }
 
   .float-block {
     position: fixed;
-    right: 40px;
-    bottom: 80px;
+    right: 20px;
+    bottom: 60px;
+    z-index: 3000;
+
+    @include min-width(map-get($tablet, sm)) {
+      right: 40px;
+      bottom: 80px;
+    }
   }
 
   .float-block__top-btn {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     display: block;
     border-radius: 100%;
     text-align: center;
-    line-height: 60px;
+    line-height: 50px;
     background-color: $color-blue;
     color: $color-white;
     opacity: 0.5;
     transition: opacity 0.4s;
+
+    @include min-width(map-get($tablet, sm)) {
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+    }
+  }
+
+  .m-menu__overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 4000;
+    background-color: rgba($color-black, 0.7);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+
+    &.is-active {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
   }
 
 </style>
