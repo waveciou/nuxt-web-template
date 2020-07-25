@@ -17,8 +17,8 @@
           </div>
         </div>
       </div>
-      <button class="m-menu__btn" @click.stop="openMobileMenu">
-        <span>Mobile Menu</span>
+      <button class="m-menu__open-btn" @click.stop="openMobileMenu" title="Open Mobile Menu">
+        <span>Open Mobile Menu</span>
       </button>
     </div>
   </header>
@@ -65,7 +65,7 @@
 
   .header {
     width: 100%;
-    padding: 0px;
+    height: 60px;
     border-bottom: 1px $color-gray solid;
     background-color: $color-white;
     position: absolute;
@@ -74,6 +74,7 @@
     z-index: 3000;
 
     @include min-width(map-get($desktop, sm)) {
+      height: auto;
       padding: 13px 0px;
     }
 
@@ -171,7 +172,7 @@
     }
   }
 
-  .m-menu__btn {
+  .m-menu__open-btn {
     width: $m-menu__size;
     height: $m-menu__size;
     display: block;

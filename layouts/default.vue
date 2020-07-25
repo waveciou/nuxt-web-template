@@ -84,7 +84,7 @@ export default {
 
   .wrapper {
     position: relative;
-    padding-top: 61px;
+    padding-top: 60px;
 
     @include min-width(map-get($desktop, sm)) {
       padding-top: 67px;

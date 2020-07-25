@@ -1,6 +1,10 @@
 <template>
-  <nav class="m-menu" :class="{ 'is-active': $store.state.menuOpen === true }">
-    <div class="m-menu__header"></div>
+  <nav class="m-menu" :class="{'is-active': $store.state.menuOpen === true}">
+    <div class="m-menu__header">
+      <button class="m-menu__close-btn" @click.stop="closeMobileMenu" title="Close Mobile Menu">
+        <span>Close Mobile Menu</span>
+      </button>
+    </div>
     <div class="m-menu__body">
       <div class="m-menu__content"></div>
     </div>
@@ -13,6 +17,11 @@
       return {
 
       }
+    },
+    methods: {
+      closeMobileMenu() {
+        this.$store.commit('CTRL_MENU_OPEN', false);
+      },
     }
   }
 </script>
@@ -33,7 +42,7 @@
     transition: transform 0.3s;
     display: flex;
     flex-direction: column;
-    background-color: $color-white;
+    background-color: $color-black;
     overflow: hidden;
 
     &.is-active {
@@ -44,6 +53,10 @@
   .m-menu__header {
     width: 100%;
     height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
   }
 
   .m-menu__body {
@@ -64,6 +77,25 @@
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     -o-overflow-scrolling: touch;
+  }
+
+  .m-menu__close-btn {
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: relative;
+
+    span {
+      @include hidetext;
+
+      &::before {
+        content: '\f00d';
+        @include fontawesome;
+        font-size: map-get($font-size, md);
+        line-height: 40px;
+        color: $color-white;
+      }
+    }
   }
 
 </style>
