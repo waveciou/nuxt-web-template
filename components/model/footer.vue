@@ -4,14 +4,14 @@
       <div class="footer__content">
         <div class="side-left">
           <ul class="footer__menu">
-            <li v-for="item in menuLink" :key="item.name">
-              <a :href="item.href" class="footer__menu-link" :title="item.name">{{ item.name }}</a>
+            <li v-for="item in menuList" :key="item.name">
+              <nuxt-link :to="item.path" class="footer__menu-link" :title="item.name">{{ item.name }}</nuxt-link>
             </li>
           </ul>
         </div>
         <div class="side-right">
           <ul class="footer__media">
-            <li v-for="item in mediaLink" :key="item.name">
+            <li v-for="item in mediaList" :key="item.name">
               <a :href="item.href" class="footer__media-link" :class="getIconClassName(item.name)" :title="item.name">{{ item.name }}</a>
             </li>
           </ul>
@@ -26,13 +26,8 @@
   export default {
     data() {
       return {
-        menuLink: [
-          {
-            name: 'contact',
-            href: '#'
-          }
-        ],
-        mediaLink: [
+        menuList: [],
+        mediaList: [
           {
             name: 'Facebook',
             href: '#'
@@ -51,6 +46,9 @@
           }
         ]
       }
+    },
+    fetch() {
+      this.menuList = this.$store.state.website.route.footer;
     },
     methods: {
       getIconClassName(payload) {

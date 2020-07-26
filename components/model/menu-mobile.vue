@@ -6,7 +6,13 @@
       </button>
     </div>
     <div class="m-menu__body">
-      <div class="m-menu__content"></div>
+      <div class="m-menu__content">
+        <ul class="m-menu__list">
+          <li v-for="item in menuList" :key="item.name">
+            <nuxt-link :to="item.path" :title="item.name" class="m-menu__list-link">{{ item.name }}</nuxt-link>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 </template>
@@ -15,8 +21,11 @@
   export default {
     data() {
       return {
-
+        menuList: []
       }
+    },
+    fetch() {
+      this.menuList = [...this.$store.state.website.route.menu, ...this.$store.state.website.route.header];
     },
     methods: {
       closeMobileMenu() {
@@ -96,6 +105,19 @@
         color: $color-white;
       }
     }
+  }
+
+  .m-menu__list {
+    > li {
+      border-bottom: 1px rgba($color-white, 0.6) solid;
+    }
+  }
+
+  .m-menu__list-link {
+    display: block;
+    padding: 10px 20px;
+    line-height: 1.8em;
+    color: $color-white;
   }
 
 </style>

@@ -3,7 +3,7 @@
     <navbar-component />
     <div class="content">
       <div class="wrap">
-        <h1 class="title">{{ title }}</h1>
+        <h1 class="title">{{ title.name }}</h1>
       </div>
     </div>
   </div>
@@ -15,13 +15,19 @@ import navbar from '~/components/model/navbar.vue';
 export default {
   data() {
     return {
-      title: 'News'
+      title: {
+        name: 'News',
+        head: ''
+      },
     }
   },
   head() {
     return {
-      title: this.title
+      title: this.title.head
     }
+  },
+  fetch() {
+    this.title.head = `${this.$store.state.website.title} - ${this.title.name}`;
   },
   components: {
     'navbar-component': navbar,

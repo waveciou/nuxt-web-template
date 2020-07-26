@@ -2,7 +2,7 @@
   <div class="main">
     <div class="content">
       <div class="wrap">
-        <h1>{{ title }}</h1>
+        <h1>{{ title.name }}</h1>
       </div>
     </div>
   </div>
@@ -13,13 +13,19 @@
 export default {
   data() {
     return {
-      title: 'Nuxt Website'
+      title: {
+        name: 'Home',
+        head: ''
+      },
     }
   },
   head() {
     return {
-      title: this.title
+      title: this.title.head
     }
+  },
+  fetch() {
+    this.title.head = this.$store.state.website.title;
   },
 }
 </script>

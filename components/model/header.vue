@@ -4,17 +4,17 @@
       <div class="header__content">
         <div class="side-left">
           <h1 v-if="$route.name === 'index'" class="logo">
-            <nuxt-link to="/"></nuxt-link>
+            <nuxt-link to="/" :title="$store.state.website.title">{{ $store.state.website.title }}</nuxt-link>
           </h1>
           <div v-else class="logo">
-            <nuxt-link to="/"></nuxt-link>
+            <nuxt-link to="/" :title="$store.state.website.title">{{ $store.state.website.title }}</nuxt-link>
           </div>
         </div>
         <div class="side-right">
           <div class="header__nav">
             <ul class="header__navlink">
-              <li v-for="item in navLink" :key="item.name">
-                <a :href="item.href" class="header__navlink-link" :class="getIconClassName(item.name)" :title="item.name">{{ item.name }}</a>
+              <li v-for="item in menuList" :key="item.name">
+                <nuxt-link :to="item.path" class="header__navlink-link" :class="getIconClassName(item.name)" :title="item.name">{{ item.name }}</nuxt-link>
               </li>
             </ul>
           </div>
@@ -31,24 +31,14 @@
   export default {
     data() {
       return {
-        navLink: [
-          {
-            name: 'Sitemap',
-            href: '#'
-          },
-          {
-            name: 'Favorite',
-            href: '#'
-          },
-          {
-            name: 'Opinion',
-            href: '#'
-          }
-        ]
+        menuList: []
       }
     },
     props: {
       scrollValue: Number
+    },
+    fetch() {
+      this.menuList = this.$store.state.website.route.header;
     },
     methods: {
       getIconClassName(payload) {

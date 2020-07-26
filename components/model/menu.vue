@@ -2,13 +2,11 @@
   <nav id="menu">
     <div class="wrap">
       <ul class="menu__list">
-        <li><nuxt-link to="/news" class="menu__list-link"><span>News</span></nuxt-link></li>
-        <li><nuxt-link to="/" class="menu__list-link"><span>About</span></nuxt-link></li>
-        <li><nuxt-link to="/" class="menu__list-link"><span>Work</span></nuxt-link></li>
-        <li><nuxt-link to="/" class="menu__list-link"><span>Product</span></nuxt-link></li>
-        <li><nuxt-link to="/" class="menu__list-link"><span>Media</span></nuxt-link></li>
-        <li><nuxt-link to="/" class="menu__list-link"><span>Shop</span></nuxt-link></li>
-        <li><nuxt-link to="/" class="menu__list-link"><span>Form</span></nuxt-link></li>
+        <li v-for="item in menuList" :key="item.name">
+          <nuxt-link :to="item.path" :title="item.name" class="menu__list-link">
+            <span>{{ item.name }}</span>
+          </nuxt-link>
+        </li>
       </ul>
     </div>
   </nav>
@@ -18,8 +16,11 @@
   export default {
     data() {
       return {
-
+        menuList: []
       }
+    },
+    fetch() {
+      this.menuList = this.$store.state.website.route.menu;
     },
   }
 </script>
