@@ -3,9 +3,12 @@
     <div class="wrap">
       <div class="header__content">
         <div class="side-left">
-          <h1 class="logo">
+          <h1 v-if="$route.name === 'index'" class="logo">
             <nuxt-link to="/"></nuxt-link>
           </h1>
+          <div v-else class="logo">
+            <nuxt-link to="/"></nuxt-link>
+          </div>
         </div>
         <div class="side-right">
           <div class="header__nav">
@@ -53,7 +56,7 @@
       },
       openMobileMenu() {
         this.$store.commit('CTRL_MENU_OPEN', true);
-      }
+      },
     }
   }
 </script>
@@ -74,8 +77,8 @@
     z-index: 3000;
 
     @include min-width(map-get($desktop, sm)) {
-      height: auto;
-      padding: 13px 0px;
+      height: 70px;
+      padding: 15px 0px;
     }
 
     &.is-fixed {

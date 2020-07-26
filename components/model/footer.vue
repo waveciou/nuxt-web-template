@@ -64,7 +64,7 @@
   @import "~/assets/scss/utils/_utils.scss";
 
   .footer {
-    padding: 13px 0px;
+    padding: 15px 0px;
     color: $color-white;
     background-color: $color-black;
   }

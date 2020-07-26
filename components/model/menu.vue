@@ -2,7 +2,7 @@
   <nav id="menu">
     <div class="wrap">
       <ul class="menu__list">
-        <li><nuxt-link to="/" class="menu__list-link"><span>News</span></nuxt-link></li>
+        <li><nuxt-link to="/news" class="menu__list-link"><span>News</span></nuxt-link></li>
         <li><nuxt-link to="/" class="menu__list-link"><span>About</span></nuxt-link></li>
         <li><nuxt-link to="/" class="menu__list-link"><span>Work</span></nuxt-link></li>
         <li><nuxt-link to="/" class="menu__list-link"><span>Product</span></nuxt-link></li>

@@ -87,7 +87,7 @@ export default {
     padding-top: 60px;
 
     @include min-width(map-get($desktop, sm)) {
-      padding-top: 67px;
+      padding-top: 70px;
     }
   }
 

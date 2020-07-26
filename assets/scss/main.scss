@@ -69,3 +69,10 @@ body {
 .main {
   min-height: 1000px;
 }
+
+.title {
+  text-align: center;
+  font-size: map-get($font-size, xl);
+  line-height: 1.6em;
+  margin-bottom: 1rem;
+}
