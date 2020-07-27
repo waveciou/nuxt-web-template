@@ -48,7 +48,7 @@
       }
     },
     fetch() {
-      this.menuList = this.$store.state.website.route.footer;
+      this.menuList = this.$store.state.route.footer;
     },
     methods: {
       getIconClassName(payload) {

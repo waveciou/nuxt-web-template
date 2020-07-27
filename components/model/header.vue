@@ -4,10 +4,10 @@
       <div class="header__content">
         <div class="side-left">
           <h1 v-if="$route.name === 'index'" class="logo">
-            <nuxt-link to="/" :title="$store.state.website.title">{{ $store.state.website.title }}</nuxt-link>
+            <nuxt-link to="/" :title="$store.state.title">{{ $store.state.title }}</nuxt-link>
           </h1>
           <div v-else class="logo">
-            <nuxt-link to="/" :title="$store.state.website.title">{{ $store.state.website.title }}</nuxt-link>
+            <nuxt-link to="/" :title="$store.state.title">{{ $store.state.title }}</nuxt-link>
           </div>
         </div>
         <div class="side-right">
@@ -38,7 +38,7 @@
       scrollValue: Number
     },
     fetch() {
-      this.menuList = this.$store.state.website.route.header;
+      this.menuList = this.$store.state.route.header;
     },
     methods: {
       getIconClassName(payload) {

@@ -27,7 +27,7 @@ export default {
     }
   },
   fetch() {
-    this.title.head = `${this.$store.state.website.title} - ${this.title.name}`;
+    this.title.head = `${this.$store.state.title} - ${this.title.name}`;
   },
   components: {
     'navbar-component': navbar,

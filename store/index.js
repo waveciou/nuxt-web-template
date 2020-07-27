@@ -3,10 +3,9 @@
 // * state
 // * ==========================================================================
 export const state = () => ({
-  website: {
-    title: 'Nuxt Website',
-    route: {
-      header: [
+  title: 'Nuxt Website',
+  route: {
+    header: [
         {
           name: 'Sitemap',
           path: '/sitemap'
@@ -19,8 +18,8 @@ export const state = () => ({
           name: 'Opinion',
           path: '/opinion'
         }
-      ],
-      menu: [
+    ],
+    menu: [
         {
           name: 'News',
           path: '/news'
@@ -49,16 +48,13 @@ export const state = () => ({
           name: 'Form',
           path: '/form'
         },
-      ],
-      footer: [
+    ],
+    footer: [
         {
           name: 'contact',
           path: '/contact'
         }
-      ]
-    }
-    
-    
+    ]
   },
   menuOpen: false,
   screenWidth: 0,

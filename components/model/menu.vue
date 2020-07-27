@@ -20,7 +20,7 @@
       }
     },
     fetch() {
-      this.menuList = this.$store.state.website.route.menu;
+      this.menuList = this.$store.state.route.menu;
     },
   }
 </script>
