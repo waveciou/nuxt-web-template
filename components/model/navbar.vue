@@ -32,7 +32,12 @@ export default {
   computed: {
     breadcrumbs() {
       const path = this.$route.path;
-      const pathArray = path.split('/');
+      let pathArray = path.split('/');
+
+      if (pathArray[pathArray.length - 1] === '') {
+        pathArray.pop();
+      }
+
       const crumbs = pathArray.map(item => {
         const crumb = {};
         crumb.name = item === '' ? 'Home' : item;

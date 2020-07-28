@@ -75,6 +75,9 @@ export default {
         this.htmlSelector.classList.remove('is-hidden');
       }
     },
+    $route() {
+      this.$store.commit('CTRL_MENU_OPEN', false);
+    }
   },
 }
 </script>

@@ -76,4 +76,22 @@ export const mutations = {
   GET_SCREEN_WIDTH(state) {
     state.screenWidth = window.innerWidth;
   },
+  // GET_ROUTE_DATA(state, payload) {
+  //   let routeArray = [];
+  //   let keys = Object.keys(state.route);
+
+  //   keys.forEach(item => {
+  //     routeArray = [...routeArray, ...state.route[item]];
+  //   });
+
+  //   let result = routeArray.find(item => {
+  //     return item.name === payload;
+  //   });
+
+  //   if (!result) {
+  //     result = {name: '', path: '/'};
+  //   }
+
+  //   return result;
+  // }
 };
