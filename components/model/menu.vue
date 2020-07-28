@@ -3,8 +3,8 @@
     <div class="wrap">
       <ul class="menu__list">
         <li v-for="item in menuList" :key="item.name">
-          <nuxt-link :to="item.path" :title="item.name" class="menu__list-link">
-            <span>{{ item.name }}</span>
+          <nuxt-link :to="item.path" :title="item.title" class="menu__list-link">
+            <span>{{ item.title }}</span>
           </nuxt-link>
         </li>
       </ul>

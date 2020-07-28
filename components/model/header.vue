@@ -14,7 +14,7 @@
           <div class="header__nav">
             <ul class="header__navlink">
               <li v-for="item in menuList" :key="item.name">
-                <nuxt-link :to="item.path" class="header__navlink-link" :class="getIconClassName(item.name)" :title="item.name">{{ item.name }}</nuxt-link>
+                <nuxt-link :to="item.path" class="header__navlink-link" :class="getIconClassName(item.name)" :title="item.title">{{ item.title }}</nuxt-link>
               </li>
             </ul>
           </div>

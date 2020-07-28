@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       title: {
-        name: 'News',
+        name: '',
         head: ''
       },
     }
@@ -27,7 +27,15 @@ export default {
     }
   },
   fetch() {
-    this.title.head = `${this.$store.state.title} - ${this.title.name}`;
+    const name = this.$route.name;
+    const route = this.$store.getters.flatRouteData;
+
+    const routeData = route.filter(data => {
+      return data.name === this.$route.name;
+    });
+
+    this.title.name = routeData.length < 1 ? name : routeData[0].title;
+    this.title.head = routeData.length < 1 ? name : `${this.$store.state.title} - ${routeData[0].title}`;
   },
   components: {
     'navbar-component': navbar,

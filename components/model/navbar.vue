@@ -32,19 +32,30 @@ export default {
   computed: {
     breadcrumbs() {
       const path = this.$route.path;
-      let pathArray = path.split('/');
+      const pathArray = path.split('/').filter((item, index) => {
+        return item !== '' || (item === '' && index === 0);
+      });
 
-      if (pathArray[pathArray.length - 1] === '') {
-        pathArray.pop();
-      }
+      const route = this.$store.getters.flatRouteData;
 
       const crumbs = pathArray.map(item => {
         const crumb = {};
-        crumb.name = item === '' ? 'Home' : item;
-        crumb.path = item === '' ? '/' : path.slice(0, path.indexOf(item) + item.length);
-        return crumb
+
+        if (item === '') {
+          crumb.name = 'Home';
+          crumb.path = '/';
+        } else {
+          let routeData = route.filter(data => {
+            return data.name === item;
+          });
+
+          crumb.name = routeData.length < 1 ? item : routeData[0].title;
+          crumb.path = routeData.length < 1 ? item : routeData[0].path;
+        }
+        return crumb;
       });
-      return crumbs
+
+      return crumbs;
     }
   }
 }

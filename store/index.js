@@ -1,57 +1,68 @@
 
 // * ==========================================================================
-// * state
+// * State
 // * ==========================================================================
 export const state = () => ({
   title: 'Nuxt Website',
   route: {
     header: [
         {
-          name: 'Sitemap',
+          name: 'sitemap',
+          title: 'Sitemap',
           path: '/sitemap'
         },
         {
-          name: 'Favorite',
+          name: 'favorite',
+          title: 'Favorite',
           path: '/favorite'
         },
         {
-          name: 'Opinion',
+          name: 'opinion',
+          title: 'Opinion',
           path: '/opinion'
         }
     ],
     menu: [
         {
-          name: 'News',
+          name: 'news',
+          title: 'News',
           path: '/news'
         },
         {
-          name: 'About',
+          name: 'about',
+          title: 'About',
           path: '/about'
         },
         {
-          name: 'Work',
+          name: 'work',
+          title: 'Work',
           path: '/work'
         },
         {
-          name: 'Product',
+          name: 'product',
+          title: 'Product',
           path: '/product'
         },
         {
-          name: 'Media',
+          name: 'media',
+          title: 'Media',
           path: '/media'
         },
         {
-          name: 'Shop',
+          name: 'shop',
+          title: 'Shop',
           path: '/shop'
         },
         {
-          name: 'Form',
+          name: 'form',
+          title: 'Form',
           path: '/form'
         },
     ],
     footer: [
         {
           name: 'contact',
+          title: 'Contact',
           path: '/contact'
         }
     ]
@@ -66,7 +77,7 @@ export const state = () => ({
 export const actions = {};
 
 // * ==========================================================================
-// * mutations
+// * Mutations
 // * ==========================================================================
 
 export const mutations = {
@@ -76,22 +87,23 @@ export const mutations = {
   GET_SCREEN_WIDTH(state) {
     state.screenWidth = window.innerWidth;
   },
-  // GET_ROUTE_DATA(state, payload) {
-  //   let routeArray = [];
-  //   let keys = Object.keys(state.route);
-
-  //   keys.forEach(item => {
-  //     routeArray = [...routeArray, ...state.route[item]];
-  //   });
-
-  //   let result = routeArray.find(item => {
-  //     return item.name === payload;
-  //   });
-
-  //   if (!result) {
-  //     result = {name: '', path: '/'};
-  //   }
-
-  //   return result;
-  // }
 };
+
+// * ==========================================================================
+// * Getters
+// * ==========================================================================
+
+export const getters = {
+  flatRouteData: (state) => {
+    let result = [];
+    let keys = Object.keys(state.route);
+
+    keys.forEach(item => {
+      state.route[item].forEach(data => {
+        result.push(data);
+      });
+    });
+
+    return result;
+  }
+}

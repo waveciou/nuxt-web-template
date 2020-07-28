@@ -5,7 +5,7 @@
         <div class="side-left">
           <ul class="footer__menu">
             <li v-for="item in menuList" :key="item.name">
-              <nuxt-link :to="item.path" class="footer__menu-link" :title="item.name">{{ item.name }}</nuxt-link>
+              <nuxt-link :to="item.path" class="footer__menu-link" :title="item.title">{{ item.title }}</nuxt-link>
             </li>
           </ul>
         </div>
