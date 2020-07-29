@@ -2,8 +2,13 @@
 // * ==========================================================================
 // * State
 // * ==========================================================================
+
 export const state = () => ({
-  title: 'Nuxt Website',
+  siteName: 'Nuxt Website',
+  pages: {
+    name: '',
+    head: ''
+  },
   route: {
     header: [
         {
@@ -74,7 +79,12 @@ export const state = () => ({
 // * ==========================================================================
 // * Actions
 // * ==========================================================================
-export const actions = {};
+
+export const actions = {
+  changePagesTitle({commit, getters}, payload) {
+    commit('GET_PAGE_TITLE', {payload, getters});
+  }
+};
 
 // * ==========================================================================
 // * Mutations
@@ -87,6 +97,17 @@ export const mutations = {
   GET_SCREEN_WIDTH(state) {
     state.screenWidth = window.innerWidth;
   },
+  GET_PAGE_TITLE(state, {payload, getters}) {
+    const route = getters.flatRouteData;
+    const routeName = payload;
+
+    const routeData = route.filter(data => {
+      return data.name === routeName;
+    });
+
+    state.pages.name = routeData.length < 1 ? routeName : routeData[0].title;
+    state.pages.head = routeData.length < 1 ? routeName : `${state.siteName} - ${routeData[0].title}`;
+  }
 };
 
 // * ==========================================================================

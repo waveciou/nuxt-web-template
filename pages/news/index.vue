@@ -3,7 +3,7 @@
     <navbar-component />
     <div class="content">
       <div class="wrap">
-        <h1 class="title">{{ title.name }}</h1>
+        <h1 class="title">{{ site.name }}</h1>
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@ import navbar from '~/components/model/navbar.vue';
 export default {
   data() {
     return {
-      title: {
+      site: {
         name: '',
         head: ''
       },
@@ -23,19 +23,13 @@ export default {
   },
   head() {
     return {
-      title: this.title.head
+      title: this.site.head
     }
   },
   fetch() {
-    const name = this.$route.name;
-    const route = this.$store.getters.flatRouteData;
-
-    const routeData = route.filter(data => {
-      return data.name === this.$route.name;
-    });
-
-    this.title.name = routeData.length < 1 ? name : routeData[0].title;
-    this.title.head = routeData.length < 1 ? name : `${this.$store.state.title} - ${routeData[0].title}`;
+    this.$store.dispatch('changePagesTitle', this.$route.name);
+    this.site.name = this.$store.state.pages.name;
+    this.site.head = this.$store.state.pages.head;
   },
   components: {
     'navbar-component': navbar,

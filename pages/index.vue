@@ -25,7 +25,7 @@ export default {
     }
   },
   fetch() {
-    this.title.head = this.$store.state.title;
+    this.title.head = this.$store.state.siteName;
   },
 }
 </script>

@@ -9,7 +9,7 @@
     <footer-component />
     <transition name="fade" mode="out-in" v-if="scrollValue > 0">
       <div class="float-block">
-        <a href="javascript:;" class="float-block__top-btn" v-scroll-to="{element: 'body'}">TOP</a>
+        <a href="javascript:;" class="float-block__top-btn" v-scroll-to="{element: 'body'}" title="TOP">TOP</a>
       </div>
     </transition>
     <div class="m-menu__overlay" :class="{'is-active': $store.state.menuOpen === true}" @click.stop="closeMobileMenu">
@@ -42,7 +42,7 @@ export default {
   mounted() {
     this.htmlSelector = document.querySelector('html');
 
-    this.$store.commit('GET_SCREEN_WIDTH');
+    this.getScreenWidth();
 
     window.addEventListener('scroll', this.getScrollValue);
     window.addEventListener('resize', this.getScreenWidth);
@@ -75,8 +75,9 @@ export default {
         this.htmlSelector.classList.remove('is-hidden');
       }
     },
-    $route() {
+    $route(name) {
       this.$store.commit('CTRL_MENU_OPEN', false);
+      this.$store.dispatch('changePagesTitle', name);
     }
   },
 }
