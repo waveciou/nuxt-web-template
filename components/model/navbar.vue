@@ -14,7 +14,18 @@
           </nav>
         </div>
         <div class="side-right">
-          <div class="feature"></div>
+          <ul class="feature">
+            <li>
+              <button class="feature__btn has-icon icon-print" title="Print">
+                <span>Print</span>
+              </button>
+            </li>
+            <li class="share-block">
+              <button class="feature__btn has-icon icon-share" title="Share">
+                <span>Share</span>
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -119,6 +130,48 @@ export default {
         content: '\f015';
         @include fontawesome;
       }
+    }
+  }
+
+  .feature {
+    display: none;
+
+    @include min-width(map-get($desktop, sm)) {
+      display: flex;
+      align-items: center;
+    }
+
+    > li {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+  .feature__btn {
+    width: 40px;
+    height: 40px;
+    display: block;
+    border-radius: 100%;
+    color: $color-white;
+    background-color: $color-black;
+    text-align: center;
+
+    > span {
+      display: none;
+    }
+
+    &.has-icon::before {
+      color: $color-white;
+      @include fontawesome;
+      font-size: 125%;
+    }
+
+    &.icon-print::before {
+      content: '\f1c4';
+    }
+
+    &.icon-share::before {
+      content: '\f064';
     }
   }
 
