@@ -35,7 +35,6 @@ export default {
     ],
     script: [
       { src: './_resources/js/polyfill.min.js' },
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.min.js' }
     ]
   },
   loading: { color: '#fff' },

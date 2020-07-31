@@ -9,7 +9,7 @@
       <div class="m-menu__content">
         <ul class="m-menu__list">
           <li v-for="item in menuList" :key="item.name">
-            <nuxt-link :to="item.path" :title="item.name" class="m-menu__list-link">{{ item.name }}</nuxt-link>
+            <nuxt-link :to="item.path" :title="item.title" class="m-menu__list-link">{{ item.title }}</nuxt-link>
           </li>
         </ul>
       </div>

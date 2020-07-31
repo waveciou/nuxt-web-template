@@ -12,7 +12,9 @@
         <div class="side-right">
           <ul class="footer__media">
             <li v-for="item in mediaList" :key="item.name">
-              <a :href="item.href" class="footer__media-link" :class="getIconClassName(item.name)" :title="item.name">{{ item.name }}</a>
+              <a :href="item.href" class="footer__media-link" :class="getIconClassName(item.name)" :title="item.name">
+                <span>{{ item.name }}</span>
+              </a>
             </li>
           </ul>
         </div>
@@ -68,15 +70,24 @@
   }
 
   .footer__content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding: 30px 0px;
+
+    @include min-width(map-get($desktop, md)) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 
   .footer__menu {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+
+    @include min-width(map-get($desktop, md)) {
+      margin-bottom: 0px;
+    }
 
     > li {
       padding: 0px 10px;
@@ -92,39 +103,83 @@
   .footer__media {
     display: flex;
     align-items: center;
+    justify-content: center;
+
+    @include min-width(map-get($desktop, md)) {
+      justify-content: flex-start;
+    }
 
     > li {
-      padding: 0px 15px;
+      padding: 0px 7px;
     }
   }
 
   .footer__media-link {
     display: block;
-    line-height: 1.6em;
-    color: $color-white;
-    font-size: 0rem;
+    border-radius: 100%;
+    font-size: map-get($font-size, sm);
+    overflow: hidden;
+
+    > span {
+      display: none;
+    }
 
     &.has-icon::before {
+      width: 35px;
+      height: 35px;
       display: block;
       @include fontawesome('brands');
-      font-size: map-get($font-size, md);
-      line-height: 1.4em;
+      color: $color-white;
+      line-height: 35px;
+      text-align: center;
     }
 
-    &.icon-facebook::before {
-      content: '\f39e';
+    &.icon-facebook {
+      &::before {
+        content: '\f39e';
+      }
+
+      @include min-width(map-get($desktop, sm)) {
+        &:hover {
+          background-color: #2196F3;
+        }
+      }
     }
 
-    &.icon-instagram::before {
-      content: '\f16d';
+    &.icon-instagram {
+      &::before {
+        content: '\f16d';
+      }
+
+      @include min-width(map-get($desktop, sm)) {
+        &:hover {
+          background: linear-gradient(145deg, #3051F1 10%, #C92BB7 70%);
+        }
+      }
     }
 
-    &.icon-youtube::before {
-      content: '\f167';
+    &.icon-youtube {
+      &::before {
+        content: '\f167';
+      }
+
+      @include min-width(map-get($desktop, sm)) {
+        &:hover {
+          background-color: #f44336;
+        }
+      }
     }
 
-    &.icon-twitter::before {
-      content: '\f099';
+    &.icon-twitter {
+      &::before {
+        content: '\f099';
+      }
+
+      @include min-width(map-get($desktop, sm)) {
+        &:hover {
+          background-color: #32CCFE;
+        }
+      }
     }
   }
 
