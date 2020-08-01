@@ -16,7 +16,7 @@
         <div class="side-right">
           <ul class="feature">
             <li>
-              <button class="feature__btn has-icon icon-print" title="Print">
+              <button class="feature__btn has-icon icon-print" @click.stop="printHanlder" title="Print">
                 <span>Print</span>
               </button>
             </li>
@@ -38,6 +38,11 @@ export default {
   data() {
     return {
       
+    }
+  },
+  methods: {
+    printHanlder() {
+      window.print();
     }
   },
   computed: {

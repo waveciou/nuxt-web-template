@@ -37,6 +37,11 @@
   }
 }
 
+// * 列印
+@mixin print {
+  @content;
+}
+
 // * Font Awesome
 @mixin fontawesome($type: 'solid') {
   font-weight: 900;
