@@ -1,14 +1,16 @@
 <template>
   <div class="main">
     <div class="content">
+      <carousel-component :banner="banner" />
       <div class="wrap">
-        <h1>{{ title.name }}</h1>
+        
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import carousel from '~/components/carousel.vue';
 
 export default {
   data() {
@@ -17,7 +19,24 @@ export default {
         name: 'Home',
         head: ''
       },
+      banner: [
+        {
+          name: 'banner-1',
+          src: ['https://fakeimg.pl/1920x560/', 'https://fakeimg.pl/1024x682/']
+        },
+        {
+          name: 'banner-2',
+          src: ['https://fakeimg.pl/1920x560/', 'https://fakeimg.pl/1024x682/']
+        },
+        {
+          name: 'banner-3',
+          src: ['https://fakeimg.pl/1920x560/', 'https://fakeimg.pl/1024x682/']
+        }
+      ]
     }
+  },
+  components: {
+    'carousel-component': carousel,
   },
   head() {
     return {

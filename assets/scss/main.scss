@@ -76,3 +76,25 @@ body {
   line-height: 1.6em;
   margin-bottom: 1rem;
 }
+
+// * ==========================================================================
+// * 輪播
+// * ==========================================================================
+
+.carousel {
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin: 0px 5px;
+    border-radius: 100%;
+    background-color: $color-black;
+    opacity: 0.6;
+    cursor: pointer;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: $color-black;
+    opacity: 1;
+  }
+}

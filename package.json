@@ -13,6 +13,9 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "nuxt": "^2.0.0",
+    "swiper": "^6.1.1",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-no-ssr": "^1.1.1",
     "vue-scrollto": "^2.18.1"
   },
   "devDependencies": {
