@@ -116,6 +116,7 @@
 
   .footer__media-link {
     display: block;
+    position: relative;
     border-radius: 100%;
     font-size: map-get($font-size, sm);
     overflow: hidden;
@@ -124,61 +125,76 @@
       display: none;
     }
 
-    &.has-icon::before {
-      width: 35px;
-      height: 35px;
-      display: block;
-      @include fontawesome('brands');
-      color: $color-white;
-      line-height: 35px;
-      text-align: center;
-    }
-
-    &.icon-facebook {
+    &.has-icon {
       &::before {
-        content: '\f39e';
+        content: '';
+        width: 100%;
+        height: 100%;
+        display: block;
+        border-radius: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        transition: transform 0.3s;
+        transform: scale(0);
+      }
+
+      &::after {
+        width: 35px;
+        height: 35px;
+        display: block;
+        position: relative;
+        @include fontawesome('brands');
+        color: $color-white;
+        line-height: 35px;
+        text-align: center;
       }
 
       @include min-width(map-get($desktop, sm)) {
-        &:hover {
-          background-color: #2196F3;
+        &:hover::before {
+          transform: scale(1);
         }
+      }
+    }
+    
+
+    &.icon-facebook {
+      &::before {
+        background-color: #2196F3;
+      }
+
+      &::after {
+        content: '\f39e';
       }
     }
 
     &.icon-instagram {
       &::before {
-        content: '\f16d';
+        background: linear-gradient(145deg, #3051F1 10%, #C92BB7 70%);
       }
 
-      @include min-width(map-get($desktop, sm)) {
-        &:hover {
-          background: linear-gradient(145deg, #3051F1 10%, #C92BB7 70%);
-        }
+      &::after {
+        content: '\f16d';
       }
     }
 
     &.icon-youtube {
       &::before {
-        content: '\f167';
+        background-color: #f44336;
       }
 
-      @include min-width(map-get($desktop, sm)) {
-        &:hover {
-          background-color: #f44336;
-        }
+      &::after {
+        content: '\f167';
       }
     }
 
     &.icon-twitter {
       &::before {
-        content: '\f099';
+        background-color: #32CCFE;
       }
 
-      @include min-width(map-get($desktop, sm)) {
-        &:hover {
-          background-color: #32CCFE;
-        }
+      &::after {
+        content: '\f099';
       }
     }
   }

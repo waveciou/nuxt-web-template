@@ -125,6 +125,12 @@ export default {
       height: 60px;
       line-height: 60px;
     }
+
+    @include min-width(map-get($desktop, sm)) {
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 
   .m-menu__overlay {
