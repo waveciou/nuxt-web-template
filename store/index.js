@@ -73,6 +73,8 @@ export const state = () => ({
     ]
   },
   menuOpen: false,
+  lightBox: false,
+  overlay: false,
   screenWidth: 0,
 });
 
@@ -91,8 +93,13 @@ export const actions = {
 // * ==========================================================================
 
 export const mutations = {
+  CTRL_LIGHTBOX(state, payload) {
+    state.lightBox = payload;
+    state.overlay = payload;
+  },
   CTRL_MENU_OPEN(state, payload) {
     state.menuOpen = payload;
+    state.overlay = payload;
   },
   GET_SCREEN_WIDTH(state) {
     state.screenWidth = window.innerWidth;

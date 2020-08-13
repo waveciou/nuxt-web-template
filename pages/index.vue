@@ -3,14 +3,16 @@
     <div class="content">
       <carousel-component :banner="banner" />
       <div class="wrap">
-        
+        <button @click="ctrlLightboxHandler">lightbox</button>
       </div>
     </div>
+    <lightbox-component :control="lightbox" @closeLightboxHandler="closeLightboxHandler"></lightbox-component>
   </div>
 </template>
 
 <script>
 import carousel from '~/components/carousel.vue';
+import lightbox from '~/components/lightbox.vue';
 
 export default {
   data() {
@@ -19,6 +21,7 @@ export default {
         name: 'Home',
         head: ''
       },
+      lightbox: false,
       banner: [
         {
           name: 'banner-1',
@@ -37,6 +40,7 @@ export default {
   },
   components: {
     'carousel-component': carousel,
+    'lightbox-component': lightbox
   },
   head() {
     return {
@@ -46,6 +50,14 @@ export default {
   fetch() {
     this.title.head = this.$store.state.siteName;
   },
+  methods: {
+    ctrlLightboxHandler() {
+      this.lightbox = !this.lightbox;
+    },
+    closeLightboxHandler() {
+      this.lightbox = false;
+    }
+  }
 }
 </script>
 

@@ -12,7 +12,7 @@
         <a href="javascript:;" class="float-block__top-btn" v-scroll-to="{element: 'body'}" title="TOP">TOP</a>
       </div>
     </transition>
-    <div class="m-menu__overlay" :class="{'is-active': $store.state.menuOpen === true}" @click.stop="closeMobileMenu">
+    <div class="overlay" :class="{ 'is-active': $store.state.overlay === true }" @click.stop="closeOverlay">
     </div>
     <mobile-menu-component />
   </div>
@@ -52,8 +52,9 @@ export default {
     window.removeEventListener('resize', this.getScreenWidth);
   },
   methods: {
-    closeMobileMenu() {
+    closeOverlay() {
       this.$store.commit('CTRL_MENU_OPEN', false);
+      this.$store.commit('CTRL_LIGHTBOX', false);
     },
     getScreenWidth() {
       this.$store.commit('GET_SCREEN_WIDTH');
@@ -63,12 +64,12 @@ export default {
     }
   },
   computed: {
-    menuOpenStatus() {
-      return this.$store.state.menuOpen;
+    overlayStatus() {
+      return this.$store.state.overlay;
     },
   },
   watch: {
-    menuOpenStatus(value) {
+    overlayStatus(value) {
       if (value === true) {
         this.htmlSelector.classList.add('is-hidden');
       } else {
@@ -133,7 +134,7 @@ export default {
     }
   }
 
-  .m-menu__overlay {
+  .overlay {
     width: 100%;
     height: 100%;
     position: fixed;
