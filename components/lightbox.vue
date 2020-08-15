@@ -33,10 +33,10 @@ export default {
   @import "~/assets/scss/utils/_utils.scss";
 
   .lightbox {
-    min-width: 360px;
-    max-width: 100%;
-    min-height: 480px;
-    max-height: 100%;
+    width: 95%;
+    max-width: 1000px;
+    height: 80%;
+    max-height: 768px;
     padding: 1.5rem;
     background-color: $color-white;
     position: fixed;

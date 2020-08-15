@@ -72,9 +72,18 @@ body {
 
 .title {
   text-align: center;
-  font-size: map-get($font-size, xl);
+  font-size: map-get($font-size, lg);
   line-height: 1.6em;
   margin-bottom: 1rem;
+
+  @include min-width(map-get($tablet, sm)) {
+    font-size: map-get($font-size, xl);
+  }
+}
+
+.section {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 // * ==========================================================================

@@ -2,9 +2,12 @@
   <div class="main">
     <div class="content">
       <carousel-component :banner="banner" />
-      <div class="wrap">
-        <button @click="ctrlLightboxHandler">lightbox</button>
-      </div>
+      <section class="section">
+        <div class="wrap">
+          <h2 class="title">BREAKING NEWS</h2>
+          <button @click="ctrlLightboxHandler">lightbox</button>
+        </div>
+      </section>
     </div>
     <lightbox-component :control="lightbox" @closeLightboxHandler="closeLightboxHandler"></lightbox-component>
   </div>
