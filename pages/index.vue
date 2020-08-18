@@ -5,7 +5,7 @@
       <section class="section">
         <div class="wrap">
           <h2 class="title">BREAKING NEWS</h2>
-          <button @click="ctrlLightboxHandler">lightbox</button>
+          <newsBlock-component :album="news.album" :article="news.article" />
         </div>
       </section>
     </div>
@@ -16,6 +16,7 @@
 <script>
 import carousel from '~/components/carousel.vue';
 import lightbox from '~/components/lightbox.vue';
+import newsBlock from '~/components/home_newsBlock.vue';
 
 export default {
   data() {
@@ -38,12 +39,49 @@ export default {
           name: 'banner-3',
           src: ['https://fakeimg.pl/1920x560/', 'https://fakeimg.pl/1024x682/']
         }
-      ]
+      ],
+      news: {
+        album: [
+          {
+            id: 1,
+            name: 'news-1',
+            src: 'https://fakeimg.pl/800x800/'
+          },
+          {
+            id: 2,
+            name: 'news-2',
+            src: 'https://fakeimg.pl/800x800/'
+          },
+          {
+            id: 3,
+            name: 'news-3',
+            src: 'https://fakeimg.pl/800x800/'
+          },
+        ],
+        article: [
+          {
+            id: 1,
+            title: 'News Title',
+            caption: 'The News captions',
+          },
+          {
+            id: 2,
+            title: 'News Title',
+            caption: 'The News captions',
+          },
+          {
+            id: 3,
+            title: 'News Title',
+            caption: 'The News captions',
+          },
+        ]
+      }
     }
   },
   components: {
     'carousel-component': carousel,
-    'lightbox-component': lightbox
+    'lightbox-component': lightbox,
+    'newsBlock-component': newsBlock,
   },
   head() {
     return {
