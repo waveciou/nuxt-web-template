@@ -61,17 +61,34 @@ export default {
   .newsBlock {
     width: 100%;
     max-width: 1024px;
-    display: flex;
-    flex-wrap: wrap;
     position: relative;
-    margin: 3rem auto;
+    margin: 1rem auto;
+
+    @include min-width(map-get($tablet, sm)) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    @include min-width(map-get($desktop, sm)) {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
   }
 
   .newsBlock__album,
   .newsBlock__content {
-    width: 50%;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    @include min-width(map-get($tablet, sm)) {
+      width: 50%;
+      padding: 2rem 1rem;
+    }
+
+    @include min-width(map-get($desktop, sm)) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 
   .newsBlock__album-item {
@@ -107,7 +124,11 @@ export default {
   }
 
   .newsBlock__list-title {
-    font-size: map-get($font-size, md);
+    font-size: map-get($font-size, sm);
+
+    @include min-width(map-get($tablet, sm)) {
+      font-size: map-get($font-size, md);
+    }
   }
 
   .newsBlock__list-caption {

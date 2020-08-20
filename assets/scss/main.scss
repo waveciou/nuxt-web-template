@@ -57,7 +57,7 @@ body {
   max-width: calc(100% - 20px);
   margin: auto;
 
-  @include min-width(map-get($phone, md)) {
+  @include min-width(map-get($phone, sm)) {
     max-width: calc(100% - 30px);
   }
 
