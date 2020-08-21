@@ -16,7 +16,7 @@
 <script>
 import carousel from '~/components/carousel.vue';
 import lightbox from '~/components/lightbox.vue';
-import newsBlock from '~/components/home_newsBlock.vue';
+import newsBlock from '~/components/newsBlock.vue';
 
 export default {
   data() {
