@@ -6,11 +6,13 @@
         <h1 class="title">{{ site.name }}</h1>
       </div>
     </div>
+    <lightbox-component :control="lightbox" @closeLightboxHandler="closeLightboxHandler"></lightbox-component>
   </div>
 </template>
 
 <script>
 import navbar from '~/components/model/navbar.vue';
+import lightbox from '~/components/lightbox.vue';
 
 export default {
   data() {
@@ -33,6 +35,15 @@ export default {
   },
   components: {
     'navbar-component': navbar,
+    'lightbox-component': lightbox,
+  },
+  methods: {
+    ctrlLightboxHandler() {
+      this.lightbox = !this.lightbox;
+    },
+    closeLightboxHandler() {
+      this.lightbox = false;
+    }
   }
 }
 </script>
